@@ -1322,6 +1322,14 @@ Util.profileStart('measures');
         for (var text in sizes.texts.widths) {
           if (sizes.texts.widths.hasOwnProperty(text)) {
             var width = sizes.texts.widths[text]
+            if (width > $svg.width()) {
+              for (var span in data.spans) {
+                var spanData = data.spans[span];
+                if (text.indexOf(spanData.text) >= 0) {
+                  // TODO Split spanData.fragments and re-render
+                }
+              }
+            }
             if (width > maxTextWidth) maxTextWidth = width;
           }
         }
